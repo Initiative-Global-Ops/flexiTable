@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/flexiTable.github.io/my-app/static/css/main.d7096ce0.chunk.css",
+    "main.js": "/flexiTable.github.io/my-app/static/js/main.778e4b9d.chunk.js",
+    "main.js.map": "/flexiTable.github.io/my-app/static/js/main.778e4b9d.chunk.js.map",
+    "runtime-main.js": "/flexiTable.github.io/my-app/static/js/runtime-main.a13ed031.js",
+    "runtime-main.js.map": "/flexiTable.github.io/my-app/static/js/runtime-main.a13ed031.js.map",
+    "static/css/2.3d5167d2.chunk.css": "/flexiTable.github.io/my-app/static/css/2.3d5167d2.chunk.css",
+    "static/js/2.347a16c0.chunk.js": "/flexiTable.github.io/my-app/static/js/2.347a16c0.chunk.js",
+    "static/js/2.347a16c0.chunk.js.map": "/flexiTable.github.io/my-app/static/js/2.347a16c0.chunk.js.map",
+    "index.html": "/flexiTable.github.io/my-app/index.html",
+    "static/css/2.3d5167d2.chunk.css.map": "/flexiTable.github.io/my-app/static/css/2.3d5167d2.chunk.css.map",
+    "static/css/main.d7096ce0.chunk.css.map": "/flexiTable.github.io/my-app/static/css/main.d7096ce0.chunk.css.map",
+    "static/js/2.347a16c0.chunk.js.LICENSE.txt": "/flexiTable.github.io/my-app/static/js/2.347a16c0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a13ed031.js",
+    "static/css/2.3d5167d2.chunk.css",
+    "static/js/2.347a16c0.chunk.js",
+    "static/css/main.d7096ce0.chunk.css",
+    "static/js/main.778e4b9d.chunk.js"
+  ]
+}
