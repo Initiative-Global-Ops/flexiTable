@@ -7,6 +7,8 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import './styles.css';
 import { useEffect, useState, useRef } from 'react';
+import jsPDF from 'jspdf';
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 
     const pagination = true;
@@ -50,8 +52,8 @@ class Table extends Component {
           ],
           
           defaultColDef: {
-            cellStyle: { backgroundColor: '#f5f2ee', 
-            borderRight:'0.25 solid black' },
+            cellStyle: { backgroundColor: 'white', 
+            borderRight:'0.15px solid lightgrey' },
             resizable: true,
             flex: 1,
             minWidth: 100,
@@ -62,10 +64,6 @@ class Table extends Component {
           rowData: [],
         };   
       }
-
-
-       
-
       
       onGridReady = (params) => {
         this.gridApi = params.api;
@@ -86,30 +84,37 @@ class Table extends Component {
             columnDefs: [...prevState.columnDefs, tactic]
         }))
     }
+
+    generatePDF = () => { 
+      var doc = new jsPDF('p', 'pt', 'letter'); 
+      doc.text(20, 20, 'Hello.')   
+      doc.save('flexiTable.pdf')
+    }  
     
-      render() {
-        // console.log("cols",this.state.columnDefs)
-    
+      render() {    
         return (
+          
           <div style={{ width: "100vw", height: "100vh" }}>
+            
              <div
           style={{ marginTop:'0px', marginLeft:'10px',height: '0%', display: 'flex', flexDirection: 'column' }}
              >
         <span className="titles">DIMENSIONS</span>
-          <div className="btns-box"> 
-          <select style={{ backgroundColor:'#999999'}} className="dropdown" onChange={(e) => this.handleChange(e)}>
+        <span className="subhead">Select a dimension from dropdown lists to add it to the table</span> 
+          <div className="btns-box">
+          <select className="dropdown" onChange={(e) => this.handleChange(e)}>
                 <option disabled selected value>KPIs</option>
                 <option value="CTR">CTR</option>
                 <option value="VCR">VCR</option>
                 <option value="Conversion Rate">Conversion Rate</option>
                 <option value="Engagement Rate">Engagement Rate</option>
             </select>
-            <select style={{ backgroundColor:'#999999'}} className="dropdown" onChange={(e) => this.handleChange(e)}>
+            <select className="dropdown" onChange={(e) => this.handleChange(e)}>
                 <option disabled selected value>Volume Metrics</option>
                 <option value="Impressions">Impressions</option>
                 <option value="Clicks">Clicks</option>
                 <option value="Rich Media Engagements">Rich Media Engagements</option>
-                <option value="Total Converisons">Total Converisons</option>
+                <option value="Total Conversions">Total Conversions</option>
             </select>
             
             <select className="dropdown" onChange={(e) => this.handleChange(e)}>
@@ -118,13 +123,13 @@ class Table extends Component {
                 <option value="Creative Tactic / Campaign Qualifier">Creative Tactic / Campaign Qualifier</option>
                 <option value="Audience">Audience</option>
             </select>
-            <select style={{ backgroundColor:'#2F2969'}} className="dropdown" onChange={(e) => this.handleChange(e)}>
+            <select className="dropdown" onChange={(e) => this.handleChange(e)}>
                 <option disabled selected value>Product Inputs</option>
                 <option value="Product">Product</option>
                 <option value="Product Detail 1">Product Detail 1</option>
                 <option value="Product Detail 2">Product Detail 2</option>
             </select>
-            <select style={{ backgroundColor:'#104C89'}} className="dropdown" onChange={(e) => this.handleChange(e)}>
+            <select  className="dropdown" onChange={(e) => this.handleChange(e)}>
                 <option disabled selected value>Creative Version Qualifiers</option>
                 <option value="Creative Version">Creative Version</option>
                 <option value="Custom Version Field 1">Custom Version Field 1</option>
@@ -133,14 +138,14 @@ class Table extends Component {
                 <option value="Creative Dimension">Creative Dimension</option>
                 <option value="Creative Execution">Creative Execution</option>
             </select>
-            <select style={{ backgroundColor:'#3057A5'}} className="dropdown" onChange={(e) => this.handleChange(e)}>
-                <option disabled selected value>Real-Time Trigger Targetting</option>
+            <select className="dropdown" onChange={(e) => this.handleChange(e)}>
+                <option disabled selected value>Real-Time Trigger Targeting</option>
                 <option value="Data Provider">Data Provider</option>
                 <option value="Trigger Type ">Trigger Type</option>
                 <option value="Trigger Detail ">Trigger Detail</option>
                 <option value="Trigger Parameter ">Trigger Parameter</option>
             </select>
-            <select style={{ backgroundColor:'#0E4652'}} className="dropdown" onChange={(e) => this.handleChange(e)}>
+            <select className="dropdown" onChange={(e) => this.handleChange(e)}>
                 <option disabled selected value>Creative Element Insights</option>
                 <option value="Custom Creative Field 1">Custom Creative Field 1</option>
                 <option value="Custom Creative Field 2">Custom Creative Field 2</option>
@@ -156,21 +161,25 @@ class Table extends Component {
                 <option value="Custom Creative Field 12">Custom Creative Field 12</option>
             </select>
             <span className="focus"></span>
-            <button className="export-btn" onClick={() => this.onBtnExport()}>
-              Download CSV
-            </button>
+            
             </div>
             
-           
-         
         </div>
+        <button className="export-btn" onClick={() => this.onBtnExport()}>
+              Download CSV
+            </button>
 
+
+            {/* <button onClick={() => this.generatePDF()} type="primary">Download PDF</button>  */}
+     
+          
             <div
               id="myGrid"
               style={{
-                marginTop:"10px",
+                paddingRight: "10px",
+                marginTop:"15px",
                 height: "90vh",
-                width: "78vw",
+                width: "82vw",
                 float: "right"
               }}
               className="ag-theme-alpine"
@@ -194,6 +203,8 @@ class Table extends Component {
       } 
     }
 
+
+    
 
     // function getRowData(data, key) {
     //     var filtered_data = [];
